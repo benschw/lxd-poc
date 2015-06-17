@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "vivid"
 
   config.vm.define "lxd" do |lxd|
-      lxd.vm.provision "shell", path: "bootstrap.sh"
+      lxd.vm.provision "shell", path: "cloudinit.sh"
       lxd.vm.network "private_network", ip: "172.30.20.10"
   end
 
