@@ -1,0 +1,18 @@
+#cloud-config
+# vim: syntax=yaml
+output: {all: '| tee -a /var/log/cloud-init-output.log'}
+ssh_pwauth: True
+write_files:
+-   path: /tmp/hello-world
+    owner: root:root
+    permissions: '0644'
+    content: |
+        # My new file
+package_update: true
+packages:
+  - wget 
+runcmd:
+  - wget -qO- https://get.docker.com/ | sh
+  - docker run -d -p 8090 benschw/anvilmgr
+
+  
